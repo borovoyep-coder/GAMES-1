@@ -26,6 +26,12 @@ html,body{width:100%;height:100%;overflow:hidden}body{height:100vh;height:100dvh
 
 
 .monster-scale{display:inline-block;border:1px solid #647c4e66;border-radius:3px;background:#24331f;color:#b9cc9e;font:7px/1.5 ui-monospace,monospace;white-space:nowrap;padding:2px 3px;font-variant-numeric:tabular-nums}.rage .monster-scale{color:#eac494;border-color:#c5915d66}.clock-row{gap:7px}.monster-scale:focus-visible{outline:1px solid #c8df9b;outline-offset:2px}@media(max-width:720px){.hud{grid-template-columns:1fr 118px 1fr;gap:6px}.clock-row{gap:5px}.monster-scale{font-size:6px;padding:2px}.clock-row #timer{font-size:23px}}@media(max-height:500px) and (min-width:500px){.monster-scale{font-size:6px}.clock-row #timer{font-size:22px}}
+
+/* Additive creep bonuses and a compact comparison panel, sized against the viewport. */
+.clock-label{display:none}.hud{grid-template-columns:1fr 215px 1fr}.monster-scale{font-size:7px;line-height:1.25;white-space:normal;max-width:108px;text-align:left;padding:2px 4px}.match-results{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:clamp(6px,1.5vh,14px);background:radial-gradient(ellipse at 50% 35%,#213629ee,#07140ff5);overflow:hidden}.results-panel{width:min(660px,100%);max-height:calc(100vh - 12px);max-height:calc(100dvh - 12px);padding:clamp(8px,1.8vh,16px);display:flex;flex-direction:column;gap:clamp(3px,.8vh,6px);overflow:hidden;border:1px solid #819c62;border-radius:8px;background:linear-gradient(145deg,#273b2c,#14241c);box-shadow:0 20px 80px #0009}.results-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.results-heading h2{font-size:clamp(16px,3vh,25px);line-height:1.1;margin:2px 0 0;letter-spacing:1px}.results-winner{font-size:clamp(6px,1.1vh,9px);letter-spacing:1.5px;color:#c4dda2}.result-duration{font-size:clamp(6px,1vh,8px);letter-spacing:1.2px;color:#8eaa80;text-align:right}.result-duration strong{display:block;font:clamp(15px,2.8vh,23px)/1.1 ui-monospace,monospace;color:#e0e8cb;letter-spacing:0;margin-top:2px}.results-message{margin:0;color:#b5c6a7;font-size:clamp(8px,1.4vh,11px);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.results-table{width:100%;border-collapse:collapse;table-layout:fixed;flex:0 0 auto;font-size:clamp(8px,1.35vh,11px);line-height:1.1;font-variant-numeric:tabular-nums}.results-table .metric-col{width:40%}.results-table col{width:30%}.results-table tr{height:clamp(12px,2.7vh,22px)}.results-table th,.results-table td{padding:clamp(1px,.25vh,3px) 7px;border-bottom:1px solid #42583b66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.results-table th{font-weight:450;text-align:left;color:#b9c8ad}.results-table td{text-align:right;color:#e7ecd9}.results-table thead tr{height:clamp(13px,2.8vh,22px);background:#121f17aa}.results-table thead th{font-weight:700;color:#cee1b4;font-size:clamp(7px,1.2vh,10px)}.results-table thead th:not(:first-child){text-align:right}.results-table .stats-group{height:clamp(9px,1.8vh,14px)}.results-table .stats-group th{border:0;color:#8fa67c;font-size:clamp(6px,1vh,8px);letter-spacing:1.1px;background:#1b2b20;padding-top:3px}.hero-stat{display:flex;align-items:center;justify-content:flex-end;gap:9px}.hero-stat.best-hero{color:#efd38d}.stat-stars{color:#b7c79e;font-size:.8em;min-width:25px;letter-spacing:.3px}.best-hero .stat-stars{color:#efd38d}.results-table small{font-size:.8em;color:#9fb58e}.results-note{margin:0;color:#8fa67e;font-size:clamp(6px,1.15vh,9px);line-height:1.25}.replay-button{align-self:center;margin-top:2px;padding:clamp(6px,1vh,10px) 24px;font-size:clamp(8px,1.3vh,11px);flex:0 0 auto}.results-panel .replay-button:focus-visible{outline:2px solid #d8ebad;outline-offset:3px}
+@media(max-width:1050px){.hud{grid-template-columns:1fr 195px 1fr}.monster-scale{max-width:98px}}@media(max-width:720px){.hud{grid-template-columns:1fr 146px 1fr;gap:6px}.monster-scale{max-width:70px;font-size:6px;line-height:1.2;padding:2px}.results-table th,.results-table td{padding-left:4px;padding-right:4px}.hero-stat{gap:5px}.stat-stars{min-width:20px}.results-table .metric-col{width:39%}.results-table col{width:30.5%}.results-winner{letter-spacing:.8px}.results-note{font-size:7px}}
+@media(max-height:500px){.results-panel{padding:8px;gap:4px}.results-heading h2{font-size:16px}.results-winner{font-size:6px}.result-duration{font-size:6px}.result-duration strong{font-size:15px}.results-message{display:none}.results-table{font-size:8px;line-height:1}.results-table tr{height:11px}.results-table th,.results-table td{padding:1px 4px}.results-table thead tr{height:11px}.results-table thead th{font-size:7px}.results-table .stats-group{height:9px}.results-table .stats-group th{font-size:6px;padding-top:2px;letter-spacing:.7px}.results-note{font-size:6px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.replay-button{font-size:8px;padding:6px 18px;margin-top:0}.hero-stat{gap:5px}.stat-stars{min-width:20px}.results-table td small{font-size:7px}}
+
 </style>
 </head>
 <body>
@@ -36,7 +42,7 @@ html,body{width:100%;height:100%;overflow:hidden}body{height:100vh;height:100dvh
 </header>
 <section class="hud" aria-label="Состояние матча">
  <div class="team"><div class="team-symbol"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h4v4h2V4h4v5h2V5h4v15H4Zm6 9v6h4v-6Z"/></svg></div><div><div class="team-title">ВАШ ЗАМОК <small>СЕВЕРНАЯ ЦИТАДЕЛЬ</small></div><div class="health-data"><span>ПРОЧНОСТЬ</span><b id="playerHP">1000 / 1000</b></div><div class="health-track"><div class="health-fill" id="playerBar"></div></div></div></div>
- <div class="clock"><div class="clock-row"><span class="clock-label">ДО КОНЦА</span><strong id="timer">05:00</strong><span class="monster-scale" id="monsterScale" tabindex="0" title="Усиление монстров каждые 30 секунд">HP ×1</span></div><div id="phase">ОЖИДАНИЕ БОЯ</div></div>
+ <div class="clock"><div class="clock-row"><span class="clock-label">ДО КОНЦА</span><strong id="timer">05:00</strong><span class="monster-scale" id="monsterScale" tabindex="0" title="Усиление монстров каждые 30 секунд">Крипы: +0% HP | +0% скор.</span></div><div id="phase">ОЖИДАНИЕ БОЯ</div></div>
  <div class="team enemy"><div class="team-symbol"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h4v4h2V4h4v5h2V5h4v15H4Zm6 9v6h4v-6Z"/></svg></div><div><div class="team-title">ЗАМОК БОТА <small>ПЕПЕЛЬНАЯ КРЕПОСТЬ</small></div><div class="health-data"><span>ПРОЧНОСТЬ</span><b id="botHP">1000 / 1000</b></div><div class="health-track"><div class="health-fill" id="botBar"></div></div></div></div>
 </section>
 <main>
@@ -44,32 +50,41 @@ html,body{width:100%;height:100%;overflow:hidden}body{height:100vh;height:100dvh
  <canvas id="arena" width="1280" height="640" aria-label="Арена 1280 на 640 пикселей. Слева ваш лабиринт, справа лабиринт бота. Кнопка F — случайный призыв. Героя можно перетащить между стенами и скамейкой; короткий клик открывает меню.">Для игры нужен браузер с поддержкой HTML5 Canvas.</canvas>
  <div class="arena-labels"><span>01 / ВАША ОБОРОНА</span><span class="bot-label">02 / ОБОРОНА СОПЕРНИКА</span></div>
  <div class="center-seal"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor"><path d="m6 4 22 24m-1-1 2-7M4 6l7-2m15 0L4 28m1-1-2-7m25-14-7-2" stroke-width="2"/></svg>VS</div>
- <div class="overlay" id="overlay"><div class="brief"><svg class="brief-emblem" viewBox="0 0 48 48" fill="none" stroke="currentColor"><path d="M8 5h32v24L24 43 8 29Z"/><path d="m15 14 18 18m-2-17L16 31m-2-17 7 1m12 18-1-7m-1-12-7 1m-8 18 1-7" stroke-width="2"/></svg><div class="micro" id="overlayMicro">300 СЕКУНД НА ПОБЕДУ</div><h2 id="overlayTitle">Защищай.<br>Отправляй. Побеждай.</h2><p id="overlayText">Призывайте случайных героев и собирайте звёзды.<br>Волны крипов приходят каждые 15 секунд.<br>Отправляйте отряды, чтобы усилить свой доход.</p><div id="resultStats" class="result-stats" hidden></div><button class="primary" id="startBtn">НАЧАТЬ БОЙ <span aria-hidden="true">↗</span></button><div class="brief-footer" id="overlayFooter">220 ЗОЛОТА · 4 ПРИЗЫВА НА СТАРТЕ</div></div></div>
+ <div class="overlay" id="overlay"><div class="brief"><svg class="brief-emblem" viewBox="0 0 48 48" fill="none" stroke="currentColor"><path d="M8 5h32v24L24 43 8 29Z"/><path d="m15 14 18 18m-2-17L16 31m-2-17 7 1m12 18-1-7m-1-12-7 1m-8 18 1-7" stroke-width="2"/></svg><div class="micro" id="overlayMicro">300 СЕКУНД НА ПОБЕДУ</div><h2 id="overlayTitle">Защищай.<br>Отправляй. Побеждай.</h2><p id="overlayText">Призывайте случайных героев и собирайте звёзды.<br>Волны крипов приходят каждые 15 секунд.<br>Отправляйте отряды, чтобы усилить свой доход.</p><div id="resultStats" class="result-stats" hidden></div><button class="primary" id="startBtn">НАЧАТЬ БОЙ <span aria-hidden="true">↗</span></button><div class="brief-footer" id="overlayFooter">220 ЗОЛОТА · 4 ПРИЗЫВА И 30 В ЗАПАСЕ</div></div></div>
  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
 </div>
 
 <div class="stage-bottom"><div class="hint"><span class="dot"></span><span id="hint"></span></div><span id="waveInfo" class="wave-info">Волны каждые 15 сек.</span></div>
 <div class="command">
- <section class="summon-panel" aria-label="Случайный призыв и скамейка"><div class="summon-column"><button id="summonBtn" class="summon-button"><span class="summon-key">F</span><strong>Призвать героя</strong><span class="summon-price">◆ <b id="summonPrice">40</b></span><small>Случайный · 20% каждый</small></button><div class="economy">◆ <b id="gold">220</b><small>ЗОЛОТО</small></div></div><div class="reserve-area"><div class="section-head"><div class="section-title">СКАМЕЙКА <span>резерв не атакует</span></div><span class="bench-count" id="benchCount">0 / 6</span></div><div class="bench-slots" id="benchSlots"></div><div class="panel-note" id="heroNote">3 копии → 2★ · 3 героя 2★ → 3★</div></div></section>
- <section class="attack-panel" aria-label="Отправка монстров"><div class="section-head"><div class="section-title">АТАКА <span>цена +15% за отправку · откат 1,2 с</span></div><div class="income">+<b id="income">30</b> / 5 с</div></div><div class="cards" id="monsterCards"></div><div class="panel-note" id="monsterNote">Комбинируйте отряды: цена каждого типа растёт отдельно.</div></section>
+ <section class="summon-panel" aria-label="Случайный призыв и скамейка"><div class="summon-column"><button id="summonBtn" class="summon-button" title="40 золота на старте, +5 после каждого призыва. Продажа не снижает цену."><span class="summon-key">F</span><strong>Призвать героя</strong><span class="summon-price">◆ <b id="summonPrice">40</b></span><small>Случайный · 20% каждый</small></button><div class="economy">◆ <b id="gold">220</b><small>ЗОЛОТО</small></div></div><div class="reserve-area"><div class="section-head"><div class="section-title">СКАМЕЙКА <span>резерв не атакует</span></div><span class="bench-count" id="benchCount">0 / 6</span></div><div class="bench-slots" id="benchSlots"></div><div class="panel-note" id="heroNote">3 копии → 2★ · 3 героя 2★ → 3★</div></div></section>
+ <section class="attack-panel" aria-label="Отправка монстров"><div class="section-head"><div class="section-title">АТАКА <span>цена +15% за отправку · откат 1,2 с</span></div><div class="income">+<b id="income">45</b> / 5 с</div></div><div class="cards" id="monsterCards"></div><div class="panel-note" id="monsterNote">Комбинируйте отряды: цена каждого типа растёт отдельно.</div></section>
 </div>
 <div class="match-footer"><div class="income-status"><span id="incomeDue">Доход через 5 с</span><div class="income-clock" role="progressbar" aria-label="Прогресс до выплаты дохода" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div id="incomeProgress"></div></div></div><span class="footer-note">4:00 · Некромант <span> / </span> 1:30 · Ярость</span></div>
 
 </main>
 </div>
 
+
+<div class="match-results" id="matchResults" role="dialog" aria-modal="true" aria-labelledby="resultTitle" hidden>
+ <section class="results-panel"><div class="results-heading"><div><div class="results-winner" id="resultWinner"></div><h2 id="resultTitle"></h2></div><div class="result-duration">ВРЕМЯ БОЯ<strong id="resultTime">0:00</strong></div></div>
+ <p class="results-message" id="resultMessage"></p>
+ <table class="results-table" aria-label="Итоговая статистика игрока и бота"><colgroup><col class="metric-col"><col><col></colgroup><thead><tr><th scope="col">ИТОГИ МАТЧА</th><th scope="col">Игрок</th><th scope="col">Бот</th></tr></thead><tbody id="statsBody"></tbody></table>
+ <p class="results-note">★ — максимум за матч; золотом отмечены лидеры по урону. Заработок не включает стартовые 220 и возвраты.</p>
+ <button class="primary replay-button" id="replayBtn">Сыграть ещё раз ↗</button>
+ </section>
+</div>
 <canvas id="dragCanvas" aria-hidden="true"></canvas>
 <div class="hero-menu" id="heroMenu" role="dialog" aria-label="Действия героя" hidden><div class="hero-menu-head"><strong id="menuHeroName"></strong><button id="closeHeroMenu" aria-label="Закрыть меню">×</button></div><div id="menuStats" class="menu-stats"></div><button id="targetBtn">Цель: Первый ↻</button><div class="move-actions"><button id="moveHeroBtn">Переместить</button><button id="quickMoveBtn">На скамейку ↓</button></div><button class="sell-action" id="sellHeroBtn">Продать</button></div>
 
 <dialog id="help"><div class="dialog-top"><h2>Правила рубежа</h2><button class="tool" id="closeHelp" aria-label="Закрыть правила">×</button></div><div class="rule-grid"><div>
-<h3>01 / СЛУЧАЙНЫЙ ПРИЗЫВ</h3><p><kbd>F</kbd> или большая кнопка призывает случайного героя 1★. Каждый из пяти типов выпадает с вероятностью 20%. Цена отдельно для каждого игрока: 40, 50, 60, 70… золота. Стартовые 220 позволяют сделать четыре призыва. Продажа не снижает цену следующих призывов.</p><p>Герой занимает свободную стену, а когда все 8 стен заняты — одно из 6 мест скамейки. Если заполнено всё, призыв блокируется. Резерв не атакует.</p>
+<h3>01 / СЛУЧАЙНЫЙ ПРИЗЫВ</h3><p><kbd>F</kbd> или большая кнопка призывает случайного героя 1★. Каждый из пяти типов выпадает с вероятностью 20%. Цена отдельно для каждого игрока: 40, 45, 50, 55… золота. После четырёх стартовых призывов из 220 останется 30 золота. Продажа не снижает цену следующих призывов.</p><p>Герой занимает свободную стену, а когда все 8 стен заняты — одно из 6 мест скамейки. Если заполнено всё, призыв блокируется. Резерв не атакует.</p>
 <h3>02 / СЛИЯНИЕ И ПРОДАЖА</h3><p>Три одинаковых 1★ автоматически дают одного 2★. Три 2★ дают 3★. Приоритет сохранения позиции — стена. 2★: урон ×1,8 и скорость атаки ×1,15. 3★: урон ×3,2 и скорость атаки ×1,3. Продажа возвращает 70% реально потраченного на все копии золота.</p>
 <h3>03 / ПЕРЕТАСКИВАНИЕ И ЦЕЛЬ</h3><p>Зажмите героя ЛКМ и потащите. Круг под курсором показывает дальность атаки в текущем масштабе. Отпустите на стене или скамейке; занятое место меняет героев местами. За пределами площадок герой возвращается назад. Короткий клик открывает меню: «Первый» (П), «Жирный» (Ж) или «Быстрый» (Б), а также продажу и перемещение кликами.</p>
 <h3>04 / ПЯТЬ ГЕРОЕВ</h3><p>Следопыт: 18 урона / 0,24 с, радиус 165. Арбалетчик: 40 / 0,95 с, игнорирует броню и получает +50% по Оркам и Троллям. Мороз: 25 урона по области 45 px, замедление 45% на 2,5 с. Огонь: 38 урона по области 65 px и поджог 6 урона/с на 3 с. Поджоги разных героев складываются; свой поджог обновляется. Шаман: 24 урона по 4 целям, шанс 30% оглушить на 0,8 с.</p>
-</div><div><h3>05 / ЭКОНОМИКА И ОТПРАВКА</h3><p>Каждые 5 секунд: 30 золота + постоянный бонус от отправленных отрядов. Множителей дохода нет. <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd> <kbd>T</kbd> <kbd>Y</kbd> отправляют монстров. У каждого типа собственный откат 1,2 с и собственная цена: базовая ×1,15 за каждую отправку, с округлением вверх. Бонус дохода фиксирован. Цены и откаты игрока и бота независимы.</p><p>За платного врага вы получаете 20% реально уплаченной стоимости; награда скелетного отряда делится на троих. За нейтральных крипов — стандартная базовая награда.</p>
+</div><div><h3>05 / ЭКОНОМИКА И ОТПРАВКА</h3><p>Каждые 5 секунд: 45 золота + 5 за каждую прошедшую минуту + постоянный бонус от отправленных отрядов. Множителей дохода нет. <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd> <kbd>T</kbd> <kbd>Y</kbd> отправляют монстров. У каждого типа собственный откат 1,2 с и собственная цена: базовая ×1,15 за каждую отправку, с округлением вверх. Бонус дохода фиксирован. Цены и откаты игрока и бота независимы.</p><p>За платного врага — 8% базовой цены, независимо от удорожания отправок, с округлением до целого и минимумом 1 золото на существо. Скелетный отряд делит базовую награду на троих. За нейтрального крипа: 3 / 4 / 5 / 6 / 6 золота по минутам матча. Бесплатные скелеты Некроманта по-прежнему не дают награду.</p>
 <h3>06 / АВТОМАТИЧЕСКИЕ ВОЛНЫ</h3><p>Первая волна приходит сразу, далее каждые 15 с одновременно в оба лабиринта. Состав определяется прошедшим временем:</p><p>0:00–0:59: 4 Гоблина и 1 Орк.<br>1:00–1:59: 5 отдельных Скелетов, 2 Орка, 1 Тролль.<br>2:00–2:59: 2 Тролля, 2 Призрака, 1 Некромант.<br>3:00–3:59: 3 Орка, 3 Призрака, 2 Некроманта.<br>4:00–4:59: 4 Тролля, 4 Призрака, 3 Некроманта.</p><p>Волны бесплатны, не повышают цены и доход и не занимают откаты. Некромант каждые 4 с призывает двух слабых скелетов без награды за убийство.</p>
-<h3>07 / УСИЛЕНИЕ КРИПОВ</h3><p>Каждые 30 секунд прошедшего времени HP новых монстров умножается на 1,18, а урон замку — на 1,12. Множители накапливаются: через 2 минуты HP ×1,94, через 4 минуты HP ×3,76. Усиление применяется при появлении ко всем: платным, нейтральным и призванным Некромантом скелетам. Уже вышедшие монстры сохраняют характеристики. Все числа в описаниях юнитов — базовые; текущие характеристики видны в подсказке карточки, а уровень угрозы — рядом с таймером.</p><h3>08 / ПОБЕДА И УПРАВЛЕНИЕ</h3><p>Матч длится максимум 5 минут. На 4:00 оставшегося времени открывается отправка Некроманта. На 1:30 включается «Ярость»: скорость всех монстров +40%. Как только HP замка падает до нуля, бой сразу заканчивается. К 0:00 побеждает замок с большим HP; равное HP — ничья. «Сыграть ещё раз» полностью сбрасывает матч без перезагрузки страницы.</p><p><kbd>Пробел</kbd> — старт / пауза, <kbd>Esc</kbd> — отменить перетаскивание или закрыть меню. ♪ — синтезированный звук. ↓ — скачать игру одним HTML-файлом. При уходе со вкладки игра ставится на паузу.</p></div></div></dialog>
+<h3>07 / УСИЛЕНИЕ КРИПОВ</h3><p>Каждые 30 секунд новые монстры получают +18% к базовому максимальному HP и +2% к базовой скорости. Бонусы складываются: через 2 минуты +72% HP и +8% скорости. Урон замку всегда остаётся базовым. В «Ярости» к бонусу скорости прибавляется ещё 40 процентных пунктов. Усиление применяется при появлении ко всем: платным, нейтральным и скелетам Некроманта. Уже вышедшие монстры сохраняют характеристики. Индикатор у таймера показывает бонусы новых крипов с учётом «Ярости».</p><h3>08 / ПОБЕДА И УПРАВЛЕНИЕ</h3><p>Матч длится максимум 5 минут. На 4:00 оставшегося времени открывается отправка Некроманта. На 1:30 включается «Ярость»: скорость всех монстров +40%. Как только HP замка падает до нуля, бой сразу заканчивается. К 0:00 побеждает замок с большим HP; равное HP — ничья. Итоговая таблица сравнивает урон каждого типа героев и его максимальную звёздность, эффективность отправленной армии и экономику. Вклад проданных или объединённых героев сохраняется. Урон считается после брони и без избыточного урона по убитым целям. Стартовое золото и возвраты с продаж не входят в заработок; траты остаются историческими. «Сыграть ещё раз» полностью сбрасывает матч и статистику без перезагрузки страницы.</p><p><kbd>Пробел</kbd> — старт / пауза, <kbd>Esc</kbd> — отменить перетаскивание или закрыть меню. ♪ — синтезированный звук. ↓ — скачать игру одним HTML-файлом. При уходе со вкладки игра ставится на паузу.</p></div></div></dialog>
 
 <script>
 'use strict';
@@ -105,13 +120,26 @@ const audioThrottle={};
 const reduceMotion=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)').matches:false;
 let id=0,seed=3;const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
 const rand=(a,b)=>a+rnd()*(b-a);const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-function newSide(){return {gold:220,bonus:0,hp:1000,heroes:[],sent:0,kills:0,bounty:0,merges:0,purchases:0,sales:0,summonCount:0,sentByType:Array(6).fill(0),readyAt:Array(6).fill(0)}};
-function reset(){
- state={mode:'ready',time:0,incomeTime:0,rage:false,nextWaveAt:0,waveNumber:0,necroUnlocked:false,shake:0,incomePulse:0,sides:[newSide(),newSide()],monsters:[],projectiles:[],effects:[],queue:[],botThink:.65,botAttack:0,botPlan:null,botRecruitAt:0,winner:null,resultReason:null};
- cancelDrag();id=0;helpResume=false;if($('help').open)$('help').close();lastTime=performance.now();frameNow=0;Object.keys(audioThrottle).forEach(key=>delete audioThrottle[key]);hover=null;inspectedHeroId=null;movingHeroId=null;$('heroMenu').hidden=true;accumulator=0;uiElapsed=0;toastTime=0;$('toast').classList.remove('show');
- $('overlay').hidden=false;$('overlayMicro').textContent='300 СЕКУНД НА ПОБЕДУ';$('overlayTitle').innerHTML='Защищай.<br>Отправляй. Побеждай.';$('overlayText').innerHTML='Призывайте случайных героев и собирайте звёзды.<br>Волны крипов приходят каждые 15 секунд.<br>Отправляйте отряды, чтобы усилить свой доход.';$('startBtn').textContent='НАЧАТЬ БОЙ ↗';$('startBtn').setAttribute('aria-label','Начать бой');$('resultStats').hidden=true;$('overlayFooter').textContent='220 ЗОЛОТА · 4 ПРИЗЫВА НА СТАРТЕ';$('heroNote').textContent='3 одинаковых копии → 2★ · 3 героя 2★ → 3★';updateUI();
+function newStats(){return {earnedGold:0,baseIncomeGold:0,bonusIncomeGold:0,bountyGold:0,heroGoldSpent:0,monsterGoldSpent:0,saleGold:0,monstersSent:0,castleDamage:0,heroDamage:0,heroes:HEROES.map(()=>({damage:0,maxStars:0,summoned:0,goldSpent:0}))}}
+function newSide(){return {gold:220,bonus:0,hp:1000,heroes:[],sent:0,kills:0,bounty:0,merges:0,purchases:0,sales:0,summonCount:0,sentByType:Array(6).fill(0),readyAt:Array(6).fill(0),stats:newStats()}}
+function baseIncome(at=state.time){return 45+5*Math.max(0,Math.floor((at+1e-7)/60))}
+function paidBounty(type){const def=MONSTERS[type];return Math.max(1,Math.round(def.cost*.08/def.count))}
+function neutralBounty(at=state.time){return Math.min(6,3+Math.max(0,Math.floor((at+1e-7)/60)))}
+function earnGold(side,amount,source){
+ side.gold+=amount;
+ if(source==='sale'){side.stats.saleGold+=amount;return}
+ side.stats.earnedGold+=amount;
+ if(source==='base')side.stats.baseIncomeGold+=amount;
+ else if(source==='bonus')side.stats.bonusIncomeGold+=amount;
+ else if(source==='bounty')side.stats.bountyGold+=amount;
 }
-function start(){if(state.mode==='ended'){reset()}state.mode='playing';$('overlay').hidden=true;accumulator=0;initAudio();updateUI()}
+function rememberHero(lane,type,stars){const h=state.sides[lane].stats.heroes[type];h.maxStars=Math.max(h.maxStars,stars)};
+function reset(){
+ state={mode:'ready',time:0,incomeTime:0,rage:false,nextWaveAt:0,waveNumber:0,necroUnlocked:false,shake:0,incomePulse:0,sides:[newSide(),newSide()],monsters:[],projectiles:[],effects:[],queue:[],botThink:.65,botAttack:0,botPlan:null,botRecruitAt:0,winner:null,resultReason:null,summary:null};
+ cancelDrag();id=0;helpResume=false;if($('help').open)$('help').close();lastTime=performance.now();frameNow=0;Object.keys(audioThrottle).forEach(key=>delete audioThrottle[key]);hover=null;inspectedHeroId=null;movingHeroId=null;$('heroMenu').hidden=true;accumulator=0;uiElapsed=0;toastTime=0;$('toast').classList.remove('show');
+ $('overlay').hidden=false;$('overlayMicro').textContent='300 СЕКУНД НА ПОБЕДУ';$('overlayTitle').innerHTML='Защищай.<br>Отправляй. Побеждай.';$('overlayText').innerHTML='Призывайте случайных героев и собирайте звёзды.<br>Волны крипов приходят каждые 15 секунд.<br>Отправляйте отряды, чтобы усилить свой доход.';$('startBtn').textContent='НАЧАТЬ БОЙ ↗';$('startBtn').setAttribute('aria-label','Начать бой');$('resultStats').hidden=true;$('matchResults').hidden=true;$('statsBody').innerHTML='';$('overlayFooter').textContent='220 ЗОЛОТА · 4 ПРИЗЫВА И 30 В ЗАПАСЕ';$('heroNote').textContent='3 одинаковых копии → 2★ · 3 героя 2★ → 3★';updateUI();
+}
+function start(){if(state.mode==='ended'){reset()}state.mode='playing';$('overlay').hidden=true;$('matchResults').hidden=true;accumulator=0;initAudio();updateUI()}
 function pause(){if(state.mode==='playing'){cancelDrag();closeHeroMenu(true);state.mode='paused';$('overlay').hidden=false;$('overlayMicro').textContent='ТАКТИЧЕСКАЯ ПАУЗА';$('overlayTitle').textContent='Перевести дыхание.';$('overlayText').textContent='Бой, доход и таймер приостановлены. Ваша армия ждёт приказа.';$('startBtn').textContent='ПРОДОЛЖИТЬ ↗';$('startBtn').setAttribute('aria-label','Продолжить бой');$('overlayFooter').textContent='ПРОБЕЛ — ВЕРНУТЬСЯ В БОЙ';$('resultStats').hidden=true;updateUI()}else if(state.mode==='paused')start()}
 function notify(msg){$('toast').textContent=msg;$('toast').classList.add('show');toastTime=3.2}
 function initAudio(){
@@ -178,19 +206,19 @@ function autoMerge(lane){
   const copies=side.heroes.filter(h=>h.type===type&&h.stars===stars).sort((a,b)=>(a.place==='wall'?0:1)-(b.place==='wall'?0:1)||a.slot-b.slot||a.id-b.id);
   if(copies.length<3)continue;
   const chosen=copies.slice(0,3),survivor=chosen[0],consumed=new Set(chosen.slice(1).map(h=>h.id));
-  survivor.investedCost=chosen.reduce((total,h)=>total+invested(h),0);side.heroes=side.heroes.filter(h=>!consumed.has(h.id));survivor.stars++;survivor.mergePulse=1;side.merges++;changed=true;
+  survivor.investedCost=chosen.reduce((total,h)=>total+invested(h),0);side.heroes=side.heroes.filter(h=>!consumed.has(h.id));survivor.stars++;rememberHero(lane,type,survivor.stars);survivor.mergePulse=1;side.merges++;changed=true;
   if(survivor.place==='wall')state.effects.push({kind:'merge',x:survivor.x,y:survivor.y,stars:survivor.stars,color:survivor.stars===3?'#f8d67e':'#d5e5e9',life:1,max:1});
   if(lane===0){sfx(survivor.stars===3?'merge3':'merge2');notify(HEROES[type].name+' '+survivor.stars+'★ — автоматическое слияние!')}
   if(consumed.has(inspectedHeroId))closeHeroMenu();if(consumed.has(movingHeroId))movingHeroId=null;
  }}
 }
-function summonPrice(lane){return 40+state.sides[lane].summonCount*10}
+function summonPrice(lane){return 40+state.sides[lane].summonCount*5}
 function summonHero(lane){
  const side=state.sides[lane],cost=summonPrice(lane);
  if(state.mode!=='playing'||!hasRoom(lane)||side.gold+1e-8<cost)return false;
  const type=Math.floor(rnd()*HEROES.length);let place='wall',slot=firstFree(lane,'wall');
  if(slot===-1){place='bench';slot=firstFree(lane,'bench')}
- side.gold-=cost;side.summonCount++;side.purchases++;
+ side.gold-=cost;side.summonCount++;side.purchases++;side.stats.heroGoldSpent+=cost;side.stats.heroes[type].goldSpent+=cost;side.stats.heroes[type].summoned++;rememberHero(lane,type,1);
  const h={id:++id,lane,type,place,slot,investedCost:cost,stars:1,targetMode:0,cd:.1,aim:-Math.PI/2,flash:0,mergePulse:0};positionHero(h);side.heroes.push(h);
  if(place==='wall')state.effects.push({kind:'build',x:h.x,y:h.y,color:TEAM[lane],life:.7,max:.7});
  if(lane===0){sfx('build');heroNote(type);notify(HEROES[type].name+' 1★ · призыв за '+cost+' золота.')}
@@ -204,7 +232,7 @@ function moveHero(lane,heroId,place,slot){
 }
 function sellHero(lane,heroId){
  const side=state.sides[lane],h=side.heroes.find(h=>h.id===heroId);if(!h)return false;
- const value=refund(h);side.gold+=value;side.sales++;side.heroes=side.heroes.filter(x=>x.id!==heroId);
+ const value=refund(h);earnGold(side,value,'sale');side.sales++;side.heroes=side.heroes.filter(x=>x.id!==heroId);
  if(lane===0){closeHeroMenu(true);sfx('coin');notify(HEROES[h.type].name+' продан за '+format(value)+' золота.')}return true;
 }
 function monsterPrice(lane,type){return Math.ceil(MONSTERS[type].cost*Math.pow(1.15,state.sides[lane].sentByType[type])-1e-8)}
@@ -212,8 +240,8 @@ function monsterCooldown(lane,type){return Math.max(0,state.sides[lane].readyAt[
 function send(lane,type){
  const side=state.sides[lane],m=MONSTERS[type];if(!m||state.mode!=='playing'||(type===5&&state.time<60-1e-7)||monsterCooldown(lane,type)>1e-7)return false;
  const cost=monsterPrice(lane,type);if(side.gold+1e-8<cost)return false;
- side.gold-=cost;side.bonus+=m.income;side.sent++;side.sentByType[type]++;side.readyAt[type]=state.time+SEND_COOLDOWN;
- for(let n=0;n<m.count;n++)state.queue.push({at:state.time+STEP+n*.3,lane:1-lane,type,bounty:cost*.2/m.count});
+ side.gold-=cost;side.stats.monsterGoldSpent+=cost;side.stats.monstersSent+=m.count;side.bonus+=m.income;side.sent++;side.sentByType[type]++;side.readyAt[type]=state.time+SEND_COOLDOWN;
+ for(let n=0;n<m.count;n++)state.queue.push({at:state.time+STEP+n*.3,lane:1-lane,type,owner:lane});
  if(lane===0){sfx('send');notify(m.name+': в атаку! Доход +'+m.income+' · следующая цена '+monsterPrice(lane,type)+'.')}return true;
 }
 function waveSpec(at){
@@ -225,29 +253,31 @@ function waveSpec(at){
 }
 function releaseWave(at){
  const types=waveSpec(at);state.waveNumber++;
- for(let lane=0;lane<2;lane++)types.forEach((type,i)=>state.queue.push({at:at+STEP+i*.45,lane,type,neutral:true}));
+ for(let lane=0;lane<2;lane++)types.forEach((type,i)=>state.queue.push({at:at+STEP+i*.45,lane,type,neutral:true,owner:null}));
  state.effects.push({kind:'wave',x:640,y:310,text:'ВОЛНА '+state.waveNumber,color:'#c8dca0',life:1.8,max:1.8});
 }
 function monsterScaling(at=state.time){
- const level=Math.max(0,Math.floor((at+1e-7)/30));return {level,hp:Math.pow(1.18,level),damage:Math.pow(1.12,level)};
+ const level=Math.max(0,Math.floor((at+1e-7)/30));return {level,hp:1+.18*level,speed:1+.02*level};
 }
 function spawn(lane,type,options={}){
  const def=MONSTERS[type],d=options.d||0,p=pointAt(d,lane),summoned=!!options.summoned;
- const scale=monsterScaling(),hp=Math.round((summoned?40:def.hp)*scale.hp),castleHit=Math.round((summoned?12:def.hit)*scale.damage);
- const m={id:++id,lane,type,...p,d,hp,maxHp:hp,slow:0,stun:0,hitFlash:0,wiggle:rand(0,Math.PI*2),summoned,castleHit,scaleLevel:scale.level,bounty:summoned?0:options.bounty===undefined?def.cost*.2/def.count:options.bounty,neutral:!!options.neutral,burns:[],summonClock:4};
+ const scale=monsterScaling(),hp=Math.round((summoned?40:def.hp)*scale.hp),castleHit=summoned?12:def.hit;
+ const m={id:++id,lane,type,...p,d,hp,maxHp:hp,slow:0,stun:0,hitFlash:0,wiggle:rand(0,Math.PI*2),summoned,castleHit,scaleLevel:scale.level,speedScale:scale.speed,owner:options.owner!==undefined?options.owner:options.neutral||summoned?null:1-lane,bounty:summoned?0:options.neutral?neutralBounty():paidBounty(type),neutral:!!options.neutral,burns:[],summonClock:4};
  state.monsters.push(m);state.effects.push({kind:'spawn',...p,color:summoned?'#c8a2e0':TEAM[1-lane],life:.45,max:.45});return m;
 }
-function effectiveSpeed(m){return m.stun>0?0:MONSTERS[m.type].speed*(m.slow>0?.55:1)*(state.rage?1.4:1)}
+function effectiveSpeed(m){return m.stun>0?0:MONSTERS[m.type].speed*((m.speedScale||1)+(state.rage?.4:0))*(m.slow>0?.55:1)}
 function targetFor(h){
  const candidates=state.monsters.filter(m=>m.lane===h.lane&&m.hp>0&&distance(m,h)<=HEROES[h.type].range);
  candidates.sort((a,b)=>h.targetMode===1?b.hp-a.hp||b.d-a.d:h.targetMode===2?effectiveSpeed(b)-effectiveSpeed(a)||b.d-a.d:b.d-a.d);return candidates[0];
 }
-function hurt(m,amount,piercing=false,stars=1){
- if(m.hp<=0)return;const def=MONSTERS[m.type],damage=amount*(m.type===2&&!piercing?.5:1);
- m.hp-=damage;m.hitFlash=.12;
+function hurt(m,amount,piercing=false,stars=1,credit=null){
+ if(m.hp<=0)return;const def=MONSTERS[m.type],damage=Math.max(0,amount)*(m.type===2&&!piercing?.5:1),actual=Math.min(m.hp,damage);
+ m.hp=Math.max(0,m.hp-damage);m.hitFlash=.12;
+ // Store attribution by side and type, so sold/merged heroes keep their past and delayed damage.
+ if(credit&&(credit.lane===0||credit.lane===1)&&HEROES[credit.type]){const side=state.sides[credit.lane];side.stats.heroDamage+=actual;side.stats.heroes[credit.type].damage+=actual;rememberHero(credit.lane,credit.type,stars)}
  state.effects.push({kind:'damage',x:m.x+Math.sin(m.id*7)*8,y:m.y-23,text:String(Math.round(damage*10)/10),color:piercing?'#ffad62':stars===3?'#ffe6a0':'#e7e4cc',size:stars===3?17:11,life:.65,max:.65});
  if(m.type===2)state.effects.push({kind:'armor',x:m.x,y:m.y,color:piercing?'#ffae66':'#d9d4af',life:.22,max:.22});
- if(m.hp<=0){const side=state.sides[m.lane];side.gold+=m.bounty;side.bounty+=m.bounty;side.kills++;
+ if(m.hp<=0){const side=state.sides[m.lane];earnGold(side,m.bounty,'bounty');side.bounty+=m.bounty;side.kills++;
   state.effects.push({kind:'death',x:m.x,y:m.y,color:def.color,life:.4,max:.4});
   if(m.bounty>0)state.effects.push({kind:'text',x:m.x,y:m.y-13,text:'+'+format(Math.round(m.bounty*10)/10),color:'#d9c383',life:.9,max:.9});
   if(m.lane===0)sfx('death');
@@ -258,24 +288,24 @@ function applyBurn(m,p){
  if(m.hp<=0)return;const stars=p.stars||1,dps=6*DAMAGE_SCALE[stars],source=p.sourceId||0;
  let burn=m.burns.find(b=>b.source===source);
  if(burn){burn.remaining=3;burn.dps=Math.max(burn.dps,dps);burn.stars=Math.max(burn.stars,stars)}
- else m.burns.push({source,remaining:3,tick:.5,dps,stars});
+ else m.burns.push({source,lane:p.lane,remaining:3,tick:.5,dps,stars});
 }
 function tickBurns(m,dt){
  for(const burn of m.burns){const active=Math.min(dt,burn.remaining);burn.remaining-=active;burn.tick-=active;
-  while(burn.tick<=1e-7&&m.hp>0){hurt(m,burn.dps*.5,false,burn.stars);burn.tick+=.5}
+  while(burn.tick<=1e-7&&m.hp>0){hurt(m,burn.dps*.5,false,burn.stars,{lane:burn.lane,type:3});burn.tick+=.5}
  }m.burns=m.burns.filter(b=>b.remaining>1e-7);
 }
 function impact(p){
  const def=HEROES[p.type],damage=p.damage===undefined?def.damage:p.damage,stars=p.stars||1,alive=state.monsters.filter(m=>m.lane===p.lane&&m.hp>0);
  if(p.type===2||p.type===3){const radius=p.type===2?45:65;
-  for(const m of alive)if(distance(m,p)<=radius){hurt(m,damage,false,stars);if(p.type===2)status(m,'slow',2.5);else applyBurn(m,p)}
+  for(const m of alive)if(distance(m,p)<=radius){hurt(m,damage,false,stars,p);if(p.type===2)status(m,'slow',2.5);else applyBurn(m,p)}
   state.effects.push({kind:p.type===2?'frost':'explosion',x:p.x,y:p.y,color:p.type===2?'#91dcf1':'#f2a35f',life:.5,max:.5,radius});if(p.type===3)sfx('explosion',p.lane===0?1:.5);
- }else{if(p.target.hp>0)hurt(p.target,damage*(p.type===1&&MONSTERS[p.target.type].heavy?1.5:1),p.type===1,stars);state.effects.push({kind:'spark',x:p.x,y:p.y,color:def.color,life:.18,max:.18})}
+ }else{if(p.target.hp>0)hurt(p.target,damage*(p.type===1&&MONSTERS[p.target.type].heavy?1.5:1),p.type===1,stars,p);state.effects.push({kind:'spark',x:p.x,y:p.y,color:def.color,life:.18,max:.18})}
 }
 function shoot(h,target){const def=HEROES[h.type],damage=heroDamage(h),stars=h.stars||1;h.aim=Math.atan2(target.y-h.y,target.x-h.x);h.flash=.14;
  sfx(['arrow','bolt','ice','fire','lightning'][h.type],h.lane===0?1:.5);
  if(h.type===4){let current=target;const hit=[],points=[{x:h.x,y:h.y}];for(let i=0;i<4&&current;i++){
-  hit.push(current.id);points.push({x:current.x,y:current.y});hurt(current,damage,false,stars);if(rnd()<.3)status(current,'stun',.8);
+  hit.push(current.id);points.push({x:current.x,y:current.y});hurt(current,damage,false,stars,h);if(rnd()<.3)status(current,'stun',.8);
   const previous=current;current=state.monsters.filter(m=>m.lane===h.lane&&m.hp>0&&!hit.includes(m.id)&&distance(m,previous)<120).sort((a,b)=>distance(a,previous)-distance(b,previous))[0];
  }state.effects.push({kind:'lightning',points,color:def.color,life:.23,max:.23,jitter:rand(0,10)})}
  else state.projectiles.push({x:h.x,y:h.y-6,lane:h.lane,type:h.type,damage,stars,sourceId:h.id,target,tx:target.x,ty:target.y,speed:def.speed,life:2.4,angle:h.aim});
@@ -289,7 +319,7 @@ function bot(){
  }
  const walls=b.heroes.filter(h=>h.place==='wall');for(const h of walls)h.targetMode=h.type===1?1:h.type===2?2:0;
  const goal=state.time<35?4:state.time<100?5:6,cost=summonPrice(1),need=walls.length<goal||threat;
- // Первые четыре призыва стоят ровно 220, затем бот сохраняет золото под растущую цену.
+ // Первые четыре призыва стоят 190, затем бот сохраняет золото под растущую цену.
  if(hasRoom(1)&&b.gold>=cost&&(b.summonCount<4||(need&&state.time>=state.botRecruitAt)||b.gold>cost+180)){
   if(summonHero(1)){state.botRecruitAt=state.time+(b.summonCount<4?.5:5);return}
  }
@@ -300,18 +330,44 @@ function bot(){
  const ranked=types.map(x=>({...x,score:x.m.income/x.price*22+(x.type===2&&piercers===0?1.4:0)+(x.type===4&&slows>=2?1.3:0)+(x.type===1&&aoe===0?1:0)+(x.type===5&&state.time>=90?1.1:0)+rnd()*.8})).sort((a,c)=>c.score-a.score);
  if(ranked.length&&send(1,ranked[0].type))state.botAttack=state.time+rand(1,2);
 }
+function buildSummary(){
+ return {time:state.time,winner:state.winner,reason:state.resultReason,sides:state.sides.map(side=>{
+  const st=side.stats,heroes=st.heroes.map((h,type)=>({...h,type,name:HEROES[type].name}));
+  return {hp:side.hp,heroDamage:st.heroDamage,heroes,topHeroes:heroes.filter(h=>h.damage>0).slice().sort((a,b)=>b.damage-a.damage),monstersSent:st.monstersSent,orders:side.sent,castleDamage:st.castleDamage,bonusIncomeGold:st.bonusIncomeGold,bonusRate:side.bonus,earnedGold:st.earnedGold,baseIncomeGold:st.baseIncomeGold,bountyGold:st.bountyGold,heroGoldSpent:st.heroGoldSpent,monsterGoldSpent:st.monsterGoldSpent,saleGold:st.saleGold,heroesSummoned:side.summonCount};
+ })};
+}
+function statNumber(n,decimals=0){return n.toLocaleString('ru-RU',{maximumFractionDigits:decimals})}
+function renderResults(){
+ const summary=state.summary,[player,bot]=summary.sides,win=summary.winner===0,draw=summary.winner===null;
+ $('resultWinner').textContent=draw?'РАВНЫЙ РЕЗУЛЬТАТ':win?'ПОБЕДИТЕЛЬ — ИГРОК':'ПОБЕДИТЕЛЬ — БОТ';
+ $('resultTitle').textContent=draw?'Ничья.':win?'Победа!':'Поражение.';$('resultTime').textContent=clockText(Math.floor(summary.time+1e-7));
+ $('resultMessage').textContent=summary.reason==='castle'?(draw?'Оба замка разрушены.':win?'Замок бота разрушен.':'Ваш замок разрушен.'):(draw?'Пять минут истекли. HP замков равны.':win?'Время вышло. Ваш замок сохранил больше HP.':'Время вышло. У замка бота больше HP.');
+ const group=label=>'<tr class="stats-group"><th colspan="3">'+label+'</th></tr>';
+ const row=(label,a,b,title='')=>'<tr'+(title?' title="'+title+'"':'')+'><th scope="row">'+label+'</th><td>'+a+'</td><td>'+b+'</td></tr>';
+ const heroCell=(side,type)=>{const h=side.heroes[type],best=h.damage>0&&h.damage===Math.max(...side.heroes.map(x=>x.damage));return '<span class="hero-stat'+(best?' best-hero':'')+'"'+(best?' title="Лидер по урону"':'')+'><span>'+statNumber(h.damage)+'</span><span class="stat-stars" aria-label="Максимум '+h.maxStars+' звёзд">'+(h.maxStars?'★'.repeat(h.maxStars):'—')+'</span></span>'};
+ let rows=row('HP замка',statNumber(player.hp),statNumber(bot.hp));
+ rows+=group('ГЕРОИ · УРОН / МАКС. ЗВЁЗДЫ');
+ rows+=row('Всего урона',statNumber(player.heroDamage),statNumber(bot.heroDamage),'Фактический урон после брони, без избыточного урона по убитой цели. Включает поджоги и проданных героев.');
+ HEROES.forEach((h,type)=>{rows+=row(h.name,heroCell(player,type),heroCell(bot,type))});
+ rows+=group('АРМИЯ · БЕЗ НЕЙТРАЛЬНЫХ ВОЛН');
+ rows+=row('Отправлено монстров',statNumber(player.monstersSent),statNumber(bot.monstersSent),'Скелетный отряд считается за троих. Нейтральные волны и бесплатные скелеты Некроманта не входят в число отправок.');
+ rows+=row('Урон замку армией',statNumber(player.castleDamage),statNumber(bot.castleDamage),'Фактический урон отправленных монстров и их призванных скелетов. Урон нейтральных волн не включён.');
+ const bonus=side=>statNumber(side.bonusIncomeGold)+' <small>/ +'+statNumber(side.bonusRate)+'</small>';
+ rows+=row('Доп. доход: всего / тик',bonus(player),bonus(bot),'Полученный за матч бонусный доход / постоянная прибавка к каждой выплате.');
+ rows+=group('ЭКОНОМИКА');
+ rows+=row('Золото заработано',statNumber(player.earnedGold),statNumber(bot.earnedGold),'Пассивные выплаты, бонусы отправок и награды за убийства. Без стартовых 220 и возвратов с продаж.');
+ rows+=row('Героев призвано',statNumber(player.heroesSummoned),statNumber(bot.heroesSummoned));
+ rows+=row('Траты: герои / армия',statNumber(player.heroGoldSpent)+' / '+statNumber(player.monsterGoldSpent),statNumber(bot.heroGoldSpent)+' / '+statNumber(bot.monsterGoldSpent),'Фактические цены всех покупок. Слияния бесплатны, продажа не вычитается из исторических трат.');
+ rows+=row('Продажи: возврат',statNumber(player.saleGold,1),statNumber(bot.saleGold,1));
+ $('statsBody').innerHTML=rows;$('matchResults').hidden=false;$('replayBtn').focus({preventScroll:true});
+}
 function finish(reason=null){
  if(state.mode==='ended')return;
  cancelDrag();closeHeroMenu(true);const [p,b]=state.sides;
  state.mode='ended';state.resultReason=reason||(p.hp<=0||b.hp<=0?'castle':'time');state.winner=p.hp===b.hp?null:p.hp>b.hp?0:1;
  state.projectiles=[];state.queue=[];accumulator=0;
- const win=state.winner===0,draw=state.winner===null;
- sfx(draw?'draw':win?'victory':'defeat');
- $('overlay').hidden=false;$('overlayMicro').textContent=draw?'РАВНЫЙ РЕЗУЛЬТАТ':win?'ПОБЕДИТЕЛЬ — ИГРОК':'ПОБЕДИТЕЛЬ — БОТ';
- $('overlayTitle').textContent=draw?'Ничья.':win?'Победа!':'Поражение.';
- $('overlayText').textContent=(state.resultReason==='castle'?(draw?'Оба замка разрушены.':win?'Замок бота разрушен.':'Ваш замок разрушен.'):'Пять минут истекли. ')+(state.resultReason==='time'?(draw?'Оба замка сохранили одинаковое HP.':win?'У вашего замка осталось больше HP.':'У замка бота осталось больше HP.'):'');
- $('resultStats').innerHTML='<span><b>'+p.hp+'</b>ваш замок</span><span><b>'+b.hp+'</b>замок бота</span><span><b>'+p.kills+'</b>убийств</span>';$('resultStats').hidden=false;
- $('startBtn').textContent='Сыграть ещё раз ↗';$('startBtn').setAttribute('aria-label','Сыграть ещё раз');$('overlayFooter').textContent='НОВЫЙ МАТЧ — НОВАЯ ТАКТИКА';updateUI();
+ sfx(state.winner===null?'draw':state.winner===0?'victory':'defeat');
+ $('overlay').hidden=true;state.summary=buildSummary();renderResults();updateUI();
 }
 function update(dt){
  if(state.mode!=='playing')return;
@@ -319,21 +375,21 @@ function update(dt){
  state.time=Math.min(DURATION,state.time+dt);state.shake=Math.max(0,state.shake-dt);state.incomePulse=Math.max(0,state.incomePulse-dt);
  if(!state.necroUnlocked&&state.time>=60-1e-7){state.necroUnlocked=true;notify('4:00 — Некромант доступен! Клавиша Y.');sfx('build')}
  if(!state.rage&&state.time>=210-1e-7){state.rage=true;notify('1:30 — ЯРОСТЬ! Скорость монстров +40%.');sfx('rage')}
- state.incomeTime+=dt;if(state.incomeTime>=5-1e-7){state.incomeTime=Math.max(0,state.incomeTime-5);for(const side of state.sides)side.gold+=30+side.bonus;state.incomePulse=.5;sfx('coin')}
+ state.incomeTime+=dt;if(state.incomeTime>=5-1e-7){state.incomeTime=Math.max(0,state.incomeTime-5);for(const side of state.sides){earnGold(side,baseIncome(),'base');earnGold(side,side.bonus,'bonus')}state.incomePulse=.5;sfx('coin')}
  while(state.nextWaveAt<DURATION&&state.time>=state.nextWaveAt-1e-7){releaseWave(state.nextWaveAt);state.nextWaveAt+=15}
- const due=state.queue.filter(q=>q.at<=state.time+1e-7);state.queue=state.queue.filter(q=>q.at>state.time+1e-7);for(const q of due)spawn(q.lane,q.type,{bounty:q.bounty,neutral:q.neutral});
+ const due=state.queue.filter(q=>q.at<=state.time+1e-7);state.queue=state.queue.filter(q=>q.at>state.time+1e-7);for(const q of due)spawn(q.lane,q.type,{owner:q.owner,neutral:q.neutral});
  const summons=[];
  for(const m of state.monsters){if(m.hp<=0)continue;tickBurns(m,dt);if(m.hp<=0)continue;const def=MONSTERS[m.type],speed=effectiveSpeed(m),stunned=m.stun>0;
   m.slow=Math.max(0,m.slow-dt);m.stun=Math.max(0,m.stun-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);
   if(m.type===3)m.hp=Math.min(m.maxHp,m.hp+m.maxHp*.05*dt);
   m.d+=speed*dt;Object.assign(m,pointAt(m.d,m.lane));
-  if(m.d>=PATH_LENGTH){m.hp=0;const side=state.sides[m.lane];side.hp=Math.max(0,side.hp-m.castleHit);state.shake=.3;
+  if(m.d>=PATH_LENGTH){m.hp=0;const side=state.sides[m.lane],actual=Math.min(side.hp,m.castleHit);if(m.owner===0||m.owner===1)state.sides[m.owner].stats.castleDamage+=actual;side.hp=Math.max(0,side.hp-m.castleHit);state.shake=.3;
    state.effects.push({kind:'explosion',x:m.x,y:m.y,color:TEAM[1-m.lane],radius:38,life:.45,max:.45});
    state.effects.push({kind:'text',x:m.x,y:m.y-18,text:'−'+m.castleHit,color:'#f0a18b',size:17,life:1,max:1});sfx('castle');if(side.hp<=0){finish('castle');return}continue;
   }
-  if(m.type===5&&!stunned){m.summonClock-=dt;if(m.summonClock<=1e-7){m.summonClock+=4;for(let i=0;i<2;i++)summons.push({lane:m.lane,d:Math.min(PATH_LENGTH-1,m.d+22+i*14)});state.effects.push({kind:'summon',x:m.x,y:m.y,color:'#c7a3e4',life:.7,max:.7})}}
+  if(m.type===5&&!stunned){m.summonClock-=dt;if(m.summonClock<=1e-7){m.summonClock+=4;for(let i=0;i<2;i++)summons.push({lane:m.lane,d:Math.min(PATH_LENGTH-1,m.d+22+i*14),owner:m.owner,neutral:m.neutral});state.effects.push({kind:'summon',x:m.x,y:m.y,color:'#c7a3e4',life:.7,max:.7})}}
  }
- for(const q of summons)spawn(q.lane,1,{d:q.d,summoned:true});
+ for(const q of summons)spawn(q.lane,1,{d:q.d,summoned:true,owner:q.owner,neutral:q.neutral});
  for(const side of state.sides)for(const h of side.heroes){h.mergePulse=Math.max(0,h.mergePulse-dt);if(h.place!=='wall')continue;h.cd-=dt;h.flash=Math.max(0,h.flash-dt);
   if(h.cd<=0){const target=targetFor(h);if(target){shoot(h,target);h.cd=heroInterval(h)}else h.cd=0}
  }
@@ -414,25 +470,26 @@ function updateUI(){
  const [p,b]=state.sides,playing=state.mode==='playing',scale=monsterScaling();
  for(const [name,side] of [['player',p],['bot',b]]){$(name+'HP').textContent=side.hp+' / 1000';$(name+'Bar').style.width=side.hp/10+'%'}
  const remaining=Math.max(0,Math.ceil(DURATION-state.time-1e-7));$('timer').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');
- $('monsterScale').textContent='HP ×'+format(Math.round(scale.hp*100)/100);
- $('monsterScale').title='Усиление '+scale.level+' · HP +'+Math.round((scale.hp-1)*100)+'% · урон замку +'+Math.round((scale.damage-1)*100)+'%. Новые монстры: ×1,18 HP и ×1,12 урона каждые 30 сек.';
+ $('monsterScale').textContent='Крипы: +'+Math.round((scale.hp-1)*100)+'% HP | +'+Math.round((scale.speed-1+(state.rage?.4:0))*100)+'% скор.';
+ $('monsterScale').title='Уровень '+scale.level+': +'+Math.round((scale.hp-1)*100)+'% HP, +'+Math.round((scale.speed-1)*100)+'% скорости'+(state.rage?' и ещё +40% от Ярости':'')+'. Урон замку остаётся базовым. Новые крипы получают +18% HP и +2% скорости каждые 30 секунд; бонусы складываются.';
  $('monsterScale').setAttribute('aria-label',$('monsterScale').title);
- $('gold').textContent=Math.floor(p.gold+1e-7);$('income').textContent=format(30+p.bonus);$('summonPrice').textContent=summonPrice(0);
+ $('gold').textContent=Math.floor(p.gold+1e-7);$('income').textContent=format(baseIncome()+p.bonus);$('summonPrice').textContent=summonPrice(0);
  const available=playing&&hasRoom(0)&&p.gold+1e-8>=summonPrice(0);$('summonBtn').disabled=!available;$('summonBtn').classList.toggle('available',available);$('summonBtn').setAttribute('aria-label','Призвать случайного героя за '+summonPrice(0)+' золота. Вероятность каждого — 20%.');
+ $('income').parentElement.title='Базовый доход '+baseIncome()+' + бонус отправок '+p.bonus+'. База растёт на 5 каждую минуту.';
  $('incomeDue').textContent='Доход через '+format(Math.max(0,Math.ceil((5-state.incomeTime)*10)/10))+' с';$('incomeProgress').parentElement.setAttribute('aria-valuenow',String(Math.round(state.incomeTime*10)/10));
  $('phase').textContent=state.mode==='ready'?'СЛУЧАЙНЫЙ ПРИЗЫВ · 20% КАЖДЫЙ':state.mode==='paused'?'БОЙ ПРИОСТАНОВЛЕН':state.mode==='ended'?'МАТЧ ЗАВЕРШЁН':state.rage?'ЯРОСТЬ · СКОРОСТЬ +40%':state.necroUnlocked?'НЕКРОМАНТ ДОСТУПЕН':'ВОЛНЫ КАЖДЫЕ 15 СЕК.';
  document.body.classList.toggle('rage',state.rage);document.body.classList.toggle('income-paid',state.incomePulse>0);
  $('pauseBtn').disabled=!['playing','paused'].includes(state.mode);$('pauseBtn').textContent=state.mode==='paused'?'▶':'Ⅱ';
  Array.from($('monsterCards').children).forEach((el,i)=>{const locked=i===5&&state.time<60-1e-7,cd=monsterCooldown(0,i),price=monsterPrice(0,i),available=playing&&!locked&&cd<=1e-7&&p.gold+1e-8>=price;
   $('monsterCost'+i).textContent=price;el.classList.toggle('unaffordable',p.gold<price);el.classList.toggle('locked',locked);el.classList.toggle('available',available);el.disabled=!available;
-  el.title=MONSTERS[i].name+' · '+price+' золота · +'+MONSTERS[i].income+' дохода. Перезарядка 1,2 сек. Цена растёт на 15% за отправку. '+MONSTERS[i].desc+' Сейчас: '+Math.round(MONSTERS[i].hp*scale.hp)+' HP · '+Math.round(MONSTERS[i].hit*scale.damage)+' урона замку.';
+  el.title=MONSTERS[i].name+' · '+price+' золота · +'+MONSTERS[i].income+' дохода. Перезарядка 1,2 сек. Цена растёт на 15% за отправку. '+MONSTERS[i].desc+' Сейчас: '+Math.round(MONSTERS[i].hp*scale.hp)+' HP · '+MONSTERS[i].hit+' урона замку · награда '+paidBounty(i)+' золота.';
   el.setAttribute('aria-label','Отправить: '+MONSTERS[i].name+', '+price+' золота'+(cd>0?', перезарядка '+format(Math.ceil(cd*10)/10)+' секунды':''));
   $('cooldownLabel'+i).textContent=cd>1e-7?format(Math.ceil(cd*10)/10)+' с':'';
  });
  $('necroLock').hidden=state.time>=60-1e-7;$('necroLock').textContent='⌑ '+clockText(Math.max(0,Math.ceil(60-state.time-1e-7)));
  const next=Math.max(0,Math.ceil(state.nextWaveAt-state.time-1e-7));$('waveInfo').textContent='Волна '+(state.waveNumber+1)+' · через '+next+' с';
  if(state.time>=DURATION-15)$('waveInfo').textContent='Финальная волна · '+state.waveNumber;
- $('hint').textContent=dragState&&dragState.active?'Отпустите на стене или скамейке · занятое место = обмен':movingHeroId!==null?'Выберите место на стене или скамейке':!playing?(state.mode==='ended'?'Матч завершён':state.mode==='paused'?'Пауза':'220 золота = 4 первых призыва'):'Зажмите героя и перетащите · клик открывает меню';
+ $('hint').textContent=dragState&&dragState.active?'Отпустите на стене или скамейке · занятое место = обмен':movingHeroId!==null?'Выберите место на стене или скамейке':!playing?(state.mode==='ended'?'Матч завершён':state.mode==='paused'?'Пауза':'220 золота: 4 призыва и 30 в запасе'):'Зажмите героя и перетащите · клик открывает меню';
  updateBench();if(inspectedHeroId!==null)refreshHeroMenu();
 }
 function format(n){return Number.isInteger(n)?n:String(Math.round(n*100)/100).replace('.',',')}
@@ -547,11 +604,11 @@ $('sellHeroBtn').onclick=()=>{if(state.mode==='playing')sellHero(0,inspectedHero
 document.addEventListener('pointerdown',e=>{if(!$('heroMenu').hidden&&!$('heroMenu').contains(e.target)&&e.target!==canvas&&!$('benchSlots').contains(e.target))closeHeroMenu()});
 window.addEventListener('resize',fitArena);
 window.addEventListener('scroll',()=>{if(inspectedHeroId!==null)refreshHeroMenu()},{passive:true});
-$('startBtn').onclick=start;$('pauseBtn').onclick=pause;$('resetBtn').onclick=reset;$('soundBtn').onclick=()=>{sound=!sound;initAudio();$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').title=sound?'Выключить звук':'Включить звук';$('soundBtn').setAttribute('aria-label',$('soundBtn').title);$('soundBtn').style.color=sound?'#b6df80':'';if(sound)beep('gold')};
+$('startBtn').onclick=start;$('replayBtn').onclick=start;$('pauseBtn').onclick=pause;$('resetBtn').onclick=reset;$('soundBtn').onclick=()=>{sound=!sound;initAudio();$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').title=sound?'Выключить звук':'Включить звук';$('soundBtn').setAttribute('aria-label',$('soundBtn').title);$('soundBtn').style.color=sound?'#b6df80':'';if(sound)beep('gold')};
 $('helpBtn').onclick=()=>{helpResume=state.mode==='playing';if(helpResume)pause();$('help').showModal()};function closeHelp(){$('help').close()}$('closeHelp').onclick=closeHelp;$('help').addEventListener('close',()=>{if(helpResume&&state.mode==='paused')start();helpResume=false});
 
 document.addEventListener('keydown',e=>{
- if(e.ctrlKey||e.metaKey||e.altKey||e.repeat||$('help').open)return;
+ if(e.ctrlKey||e.metaKey||e.altKey||e.repeat||$('help').open)return;if(state.mode==='ended'&&!$('matchResults').hidden){if(e.code==='Tab'){e.preventDefault();$('replayBtn').focus({preventScroll:true});return}if(e.code==='Escape'){e.preventDefault();return}}
  if(e.code==='Escape'){cancelDrag();closeHeroMenu(true);updateUI();return}
  if(e.code==='Space'){if(e.target.tagName==='BUTTON')return;e.preventDefault();if(state.mode==='ready'||state.mode==='ended')start();else pause();return}
  if(e.code==='KeyF'){e.preventDefault();purchaseHero();return}
