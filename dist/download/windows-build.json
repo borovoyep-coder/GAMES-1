@@ -1,0 +1,14 @@
+{
+  "filename": "StoneLine-Windows-x64.exe",
+  "bytes": 4110848,
+  "MiB": 3.92,
+  "sha256": "36df1468aea2d2bb60c7d9c9e3ace0363bc0b07eb63465323f1584fb8ba981e8",
+  "architecture": "Windows x64",
+  "pe_subsystem": "Windows GUI",
+  "embedded_game_verified": true,
+  "game_version": 19,
+  "native_windows_launch_tested": false,
+  "runtime": "Microsoft Edge WebView2",
+  "signed": false,
+  "resources": true
+}
