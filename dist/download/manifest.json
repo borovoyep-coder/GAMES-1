@@ -1,0 +1,29 @@
+{
+  "filename": "stone-line-full-source-v19.zip",
+  "bytes": 55825980,
+  "sha256": "ac7c0a9d503db664e86767453e8eccaeb2e24c5df981878edd3f4715e23b9292",
+  "parts": [
+    {
+      "name": "source-1.bin",
+      "bytes": 16777216,
+      "sha256": "b7e622392466280b91e73ebd08e60b26e186807f626c6ed5fe8848ffab80f813"
+    },
+    {
+      "name": "source-2.bin",
+      "bytes": 16777216,
+      "sha256": "40edc7057cad218448c33c6e6e6a5b9cbaa5089e72279e51af89ddc4955ff736"
+    },
+    {
+      "name": "source-3.bin",
+      "bytes": 16777216,
+      "sha256": "2f86274a53b4c5acd7475c14db08d32d3ac30040aa903901c18d39b765290d39"
+    },
+    {
+      "name": "source-4.bin",
+      "bytes": 5494332,
+      "sha256": "e3f593371d5f4876a8421e3e3b3d6e24450000b860b8243540e2a81c27d93de5"
+    }
+  ],
+  "version": 19,
+  "files": 795
+}
